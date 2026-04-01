@@ -1,0 +1,6 @@
+#水果价格配置
+fruit:
+  price:
+    apple: 8
+    strawberry: 13
+    mango: 20
