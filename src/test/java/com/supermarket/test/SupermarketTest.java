@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class SupermarketTest {
         items.add(new PurchaseItem(FruitType.APPLE, 2, DiscountStrategy.NORMAL));
         items.add(new PurchaseItem(FruitType.STRAWBERRY, 3, DiscountStrategy.NORMAL));
 
-        double res = checkoutService.checkout(items, PromotionStrategy.NONE);
+        BigDecimal res = checkoutService.checkout(items, PromotionStrategy.NONE);
         System.out.println("A = " + res); // 预期55
     }
 
@@ -37,7 +38,7 @@ public class SupermarketTest {
         items.add(new PurchaseItem(FruitType.STRAWBERRY, 3, DiscountStrategy.NORMAL));
         items.add(new PurchaseItem(FruitType.MANGO, 1, DiscountStrategy.NORMAL));
 
-        double res = checkoutService.checkout(items, PromotionStrategy.NONE);
+        BigDecimal res = checkoutService.checkout(items, PromotionStrategy.NONE);
         System.out.println("B = " + res); // 预期75
     }
 
@@ -49,7 +50,7 @@ public class SupermarketTest {
         items.add(new PurchaseItem(FruitType.STRAWBERRY, 5, DiscountStrategy.EIGHT_DISCOUNT)); // 仅草莓打折
         items.add(new PurchaseItem(FruitType.MANGO, 2, DiscountStrategy.NORMAL));
 
-        double res = checkoutService.checkout(items, PromotionStrategy.NONE);
+        BigDecimal res = checkoutService.checkout(items, PromotionStrategy.NONE);
         System.out.println("C = " + res); // 预期132
     }
 
@@ -61,7 +62,7 @@ public class SupermarketTest {
         items.add(new PurchaseItem(FruitType.STRAWBERRY, 10, DiscountStrategy.EIGHT_DISCOUNT));
         items.add(new PurchaseItem(FruitType.MANGO, 5, DiscountStrategy.NORMAL));
 
-        double res = checkoutService.checkout(items, PromotionStrategy.FULL_100_MINUS_10);
+        BigDecimal res = checkoutService.checkout(items, PromotionStrategy.FULL_100_MINUS_10);
         System.out.println("D = " + res); // 预期274
     }
 }

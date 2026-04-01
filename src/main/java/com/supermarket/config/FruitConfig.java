@@ -4,6 +4,8 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+
 /**
  * 水果配置类
  */
@@ -12,9 +14,9 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "fruit.price")
 public class FruitConfig {
 
-    private Double apple;
+    private BigDecimal apple;
 
-    private Double strawberry;
+    private BigDecimal strawberry;
 
-    private Double mango;
+    private BigDecimal mango;
 }

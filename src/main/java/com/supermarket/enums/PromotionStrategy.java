@@ -1,5 +1,6 @@
 package com.supermarket.enums;
 
+import java.math.BigDecimal;
 import java.util.function.Function;
 
 
@@ -9,16 +10,25 @@ import java.util.function.Function;
 public enum PromotionStrategy {
 
     NONE(total -> total),
-    FULL_100_MINUS_10(total -> total >=100? total-10: total);
 
-    private final Function<Double,Double> function;
+    //满100-10
+    FULL_100_MINUS_10(total -> {
+        int compareResult = total.compareTo(new BigDecimal("100"));
+        if (compareResult >= 0) {
+            return total.subtract(new BigDecimal("10"));
+        } else {
+            return total;
+        }
+    });
+
+    private final Function<BigDecimal,BigDecimal> function;
 
 
-    PromotionStrategy(Function<Double, Double> function) {
+    PromotionStrategy(Function<BigDecimal, BigDecimal> function) {
         this.function = function;
     }
 
-    public double apply(double total) {
+    public BigDecimal apply(BigDecimal total) {
         return function.apply(total);
     }
 }

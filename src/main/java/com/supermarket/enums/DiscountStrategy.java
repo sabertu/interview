@@ -1,5 +1,6 @@
 package com.supermarket.enums;
 
+import java.math.BigDecimal;
 import java.util.function.Function;
 
 /**
@@ -9,15 +10,15 @@ public enum DiscountStrategy {
 
     NORMAL(price -> price),//不打折
 
-    EIGHT_DISCOUNT(price -> price * 0.8); //8折
+    EIGHT_DISCOUNT(price -> price.multiply(new BigDecimal("0.8"))); //8折
 
-    private final Function<Double, Double> function;
+    private final Function<BigDecimal, BigDecimal> function;
 
-    DiscountStrategy(Function<Double, Double> function) {
+    DiscountStrategy(Function<BigDecimal, BigDecimal> function) {
         this.function = function;
     }
 
-    public double apply(double price) {
+    public BigDecimal apply(BigDecimal price) {
         return function.apply(price);
     }
 }

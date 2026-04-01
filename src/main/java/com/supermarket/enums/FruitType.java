@@ -3,6 +3,8 @@ package com.supermarket.enums;
 import com.supermarket.config.FruitConfig;
 import lombok.Getter;
 
+import java.math.BigDecimal;
+
 /**
  * 水果类型枚举
  */
@@ -11,7 +13,7 @@ public enum FruitType {
 
     APPLE, STRAWBERRY, MANGO;
 
-    public static double getPrice(FruitType type, FruitConfig config) {
+    public static BigDecimal getPrice(FruitType type, FruitConfig config) {
          switch (type){
              case APPLE:
                  return config.getApple();
